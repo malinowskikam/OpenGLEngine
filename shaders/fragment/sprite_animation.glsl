@@ -14,14 +14,11 @@ in vec3 fragPosition;
 out vec4 outColor;
 
 uniform sampler2D tex0;
-uniform int rows;
-uniform int cols;
-uniform float ushift;
-uniform float vshift;
+
 
 void main()
 {
-	vec4 color = texture(tex0,(fragUv/vec2(cols,rows))+vec2(ushift,vshift));
+	vec4 color = texture(tex0,Fragment);
 	if(color.a < 0.2)
 		discard;
 	outColor = color; 

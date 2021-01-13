@@ -42,6 +42,8 @@ class InstancedObjectGroup;
 #include "common.hpp"
 #include "objParser.hpp"
 
+#include "graphics.hpp"
+#include "program.hpp"
 #include "global.hpp"
 #include "main.hpp"
 #include "window.hpp"

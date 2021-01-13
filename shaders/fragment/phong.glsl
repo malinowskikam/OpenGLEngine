@@ -18,6 +18,8 @@ uniform float modelRoughness;
 uniform int modelFlat;
 
 uniform vec3 cameraPosition;
+uniform float fogStart;
+uniform float fogStrength;
 
 uniform int reflectEnvironment;
 uniform float reflectColorPercentage;
@@ -26,7 +28,7 @@ uniform float refractColorPercentage;
 uniform float refractCoeff;
 
 uniform int haveCubeTexture;
-uniform sampler2D model2DTexture;
+uniform sampler2D modelUvTexture;
 uniform samplerCube modelCubeTexture;
 
 uniform samplerCube environmentTexture;
@@ -73,14 +75,9 @@ float fogFactor(float fogStart,float fogStrength)
 	
 }
 
-void main()
+vec4 mixWithEnvironment(vec4 color)
 {
-	vec4 color = texture(modelTexture,fragUv);
-	
-	if(color.a < 0.2f)
-		discard;
-
-	float alpha = outColor.a;
+	float alpha = color.a;
 
 	if(reflectEnvironment == 1 && refractEnvironment == 1)
 	{
@@ -89,48 +86,33 @@ void main()
 		vec3 refractionColor = texture(environmentTexture,refract(normalize(fragPosition - cameraPosition),fragNormal,refractCoeff)).rgb;
 
 		vec3 mixedEnvironmentColor = mix(reflectionColor,refractionColor,reflectColorPercentage/(reflectColorPercentage+refractColorPercentage));
-		outColor = vec4(mix(outColor.xyz,mixedEnvironmentColor,reflectColorPercentage+refractColorPercentage),alpha);
+		return vec4(mix(color.xyz,mixedEnvironmentColor,reflectColorPercentage+refractColorPercentage),alpha);
 	}
 	else if(reflectEnvironment == 1 && refractEnvironment == 0)
 	{
 		vec3 reflectionColor = texture(environmentTexture, reflect(normalize(fragPosition - cameraPosition), fragNormal)).rgb;
 
-		outColor = vec4(mix(outColor.xyz,reflectionColor,reflectColorPercentage),alpha);
+		return vec4(mix(color.xyz,reflectionColor,reflectColorPercentage),alpha);
 	}
 	else if(reflectEnvironment == 0 && refractEnvironment == 1)
 	{
 		vec3 refractionColor = texture(environmentTexture,refract(normalize(fragPosition - cameraPosition),fragNormal,refractCoeff)).rgb;
 
-		outColor = vec4(mix(outColor.xyz,refractionColor,refractColorPercentage),alpha);
+		return vec4(mix(color.xyz,refractionColor,refractColorPercentage),alpha);
 	}
+	else
+		return color;
+}
 
-	vec3 torchLight = pointLight(fragNormal,torchPosition,torchAttenuation)*torchLightColor;
-	vec3 flashlightLight = spotLight(fragNormal,flashlightPosition,flashlightAttenuation,flashlightDirection,flashlightCosAngle)*flashlightLightColor;
-	vec3 sunLight = directionLight(fragNormal,sunPosition)*sunLightColor;
-	vec3 lanternLight = pointLight(fragNormal,lanternPosition,lanternAttenuation)*lanternLightColor;
+void main()
+{
+	vec4 color = texture(modelUvTexture,fragUv);
+	
+	if(color.a < 0.2f)
+		discard;
 
-	if(modelFlat==1)
-	{
-		vec3 oppositefragNormal = -fragNormal;
-		torchLight += pointLight(oppositefragNormal,torchPosition,torchAttenuation)*torchLightColor;
-		flashlightLight += spotLight(oppositefragNormal,flashlightPosition,flashlightAttenuation,flashlightDirection,flashlightCosAngle)*flashlightLightColor;
-		sunLight += directionLight(oppositefragNormal,sunPosition)*sunLightColor;
-		lanternLight += pointLight(oppositefragNormal,lanternPosition,lanternAttenuation)*lanternLightColor;
-	}
-
-	float shadowPart = calculateShadow(fragLightPosition, fragPosition-sunPosition);
-	sunLight *= (1-shadowPart);
-
-	shadowPart = calculateTorchShadow();
-	torchLight *= (1-shadowPart);
-
-	vec3 light = clamp(modelAmbient+torchLight+flashlightLight+sunLight+lanternLight,0,1);
+	vec3 light = vec3(1.0);
 	outColor = clamp(color * vec4(light,1.0f),0,1);
 
-
-	outColor = mix(outColor,vec4(backgroundColor,1.0f),fogFactor(fogStart,fogStrength));
-
-
-	//outColor = vec4(vec3(fogFactor(fogStart,fogStrength)),1.0);
-	
+	// outColor = mix(outColor,vec4(backgroundColor,1.0f),fogFactor(fogStart,fogStrength));
 }

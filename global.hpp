@@ -12,10 +12,18 @@ class Global{
 
         unsigned int flags;
 
+        float fogStart;
+        float fogStrength;
+
+        std::map<int,Model*> models;
+        std::map<int,Texture*> textures;
+        std::map<int,Program*> programs;
+        std::map<int,GlyphSet*> fonts;
+
         GLFWwindow* window;
 
         Global();
-        void loadData();
+        void loadAssets();
         unsigned int getFlag(unsigned int mask);
         void setFlagOn(unsigned int mask);
         void setFlagOff(unsigned int mask);

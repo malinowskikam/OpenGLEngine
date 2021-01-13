@@ -6,7 +6,7 @@ Global *global = getGlobal();
 
 void initializeData()
 {
-	
+	global->loadAssets();
 }
 
 void initializeGL()

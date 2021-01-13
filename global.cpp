@@ -42,7 +42,8 @@ void Global::flipFlag(unsigned int mask)
     this->flags ^= mask;
 }
 
-void Global::loadData()
+void Global::loadAssets()
 {
-
+    this->programs[PROGRAM_PHONH] = new PhongProgram();
+    this->programs[PROGRAM_TEXT] = new TextProgram();
 }
