@@ -39,6 +39,9 @@ class Program;
 class GlyphSet;
 class InstancedObjectGroup;
 
+#include "common.hpp"
+#include "objparser.hpp"
+
 #include "global.hpp"
 #include "main.hpp"
 #include "window.hpp"
