@@ -15,6 +15,27 @@ void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int
         glfwSetWindowShouldClose(window, GLFW_TRUE);
 }
 
+void frameBufferSizeCallback(GLFWwindow* window, int width, int height)
+{
+    global->windowWidth = width;
+    global->windowHeight = height;
+}
+
+void focusCallback(GLFWwindow* window, int focused)
+{
+
+}
+
+void mousePosCallback(GLFWwindow* window, double xpos, double ypos)
+{
+    
+}
+
+void mouseActionCallback(GLFWwindow* window, int button, int action, int mods)
+{
+    
+}
+
 void displayScene()
 {
     glfwSwapBuffers(global->window);

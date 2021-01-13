@@ -62,6 +62,10 @@ void initializeWindow()
 	glfwSwapInterval(1);
 
 	glfwSetKeyCallback(global->window, keyboardCallback);
+	glfwSetFramebufferSizeCallback(global->window, frameBufferSizeCallback);
+	glfwSetWindowFocusCallback(global->window, focusCallback);
+	glfwSetCursorPosCallback(global->window, mousePosCallback);
+	glfwSetMouseButtonCallback(global->window, mouseActionCallback);
 
 	cout << "GLFW initialized" << endl;
 }
