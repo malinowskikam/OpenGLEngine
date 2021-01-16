@@ -42,6 +42,7 @@ class InstancedObjectGroup;
 #include "common.hpp"
 #include "objParser.hpp"
 
+#include "mesh.hpp"
 #include "scene.hpp"
 #include "graphics.hpp"
 #include "program.hpp"
