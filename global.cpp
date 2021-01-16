@@ -50,6 +50,24 @@ void Global::flipFlag(unsigned int mask)
 
 void Global::loadAssets()
 {
+    const char *paths1[] = {
+		"data/tex/space-skybox/space_rt.png",
+		"data/tex/space-skybox/space_lf.png",
+		"data/tex/space-skybox/space_up.png",
+		"data/tex/space-skybox/space_dn.png",
+		"data/tex/space-skybox/space_bk.png",
+		"data/tex/space-skybox/space_ft.png",	
+	};
+
+	const char *paths2[] = {
+		"data/tex/corona-skybox/corona_rt.png",
+		"data/tex/corona-skybox/corona_lf.png",
+		"data/tex/corona-skybox/corona_up.png",
+		"data/tex/corona-skybox/corona_dn.png",
+		"data/tex/corona-skybox/corona_bk.png",
+		"data/tex/corona-skybox/corona_ft.png",	
+	};
+
     this->programs[PROGRAM_PHONH] = new PhongProgram();
     this->programs[PROGRAM_TEXT] = new TextProgram();
 
@@ -62,7 +80,8 @@ void Global::loadAssets()
     this->models[MODEL_LANTERN] = new Model("data/obj/lantern.obj");
     this->models[MODEL_TORII_GATE] = new Model("data/obj/toriigate.obj");
 
-    //this->textures[TEXTURE_CUBE_CORONA] = new CubeMapTexture("data/tex/");
+    this->textures[TEXTURE_CUBE_SPACE] = new CubeMapTexture(paths1);
+    this->textures[TEXTURE_CUBE_CORONA] = new CubeMapTexture(paths2);
     this->textures[TEXTURE_UV_BOW] = new UVTexture("data/tex/bow.png");
     this->textures[TEXTURE_UV_CHERRY_TREE] = new UVTexture("data/tex/cherrytree.png");
     this->textures[TEXTURE_UV_CHERRY_TREE_BLOSSOM] = new UVTexture("data/tex/cherryblossom.png");
