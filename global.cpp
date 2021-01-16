@@ -52,4 +52,21 @@ void Global::loadAssets()
 {
     this->programs[PROGRAM_PHONH] = new PhongProgram();
     this->programs[PROGRAM_TEXT] = new TextProgram();
+
+    this->models[MODEL_CUBE] = new Model("data/obj/cube.obj");
+    this->models[MODEL_SCREEN] = new Model("data/obj/screen.obj");
+    this->models[MODEL_BOW] = new Model("data/obj/bow.obj");
+    this->models[MODEL_CHERRY_TREE] = new Model("data/obj/cherrytree.obj");
+    this->models[MODEL_CHERRY_TREE_BLOSSOM] = new Model("data/obj/cherrytreeblossom.obj");
+    this->models[MODEL_ISLAND] = new Model("data/obj/island.obj");
+    this->models[MODEL_LANTERN] = new Model("data/obj/lantern.obj");
+    this->models[MODEL_TORII_GATE] = new Model("data/obj/toriigate.obj");
+
+    //this->textures[TEXTURE_CUBE_CORONA] = new CubeMapTexture("data/tex/");
+    this->textures[TEXTURE_UV_BOW] = new UVTexture("data/tex/bow.png");
+    this->textures[TEXTURE_UV_CHERRY_TREE] = new UVTexture("data/tex/cherrytree.png");
+    this->textures[TEXTURE_UV_CHERRY_TREE_BLOSSOM] = new UVTexture("data/tex/cherryblossom.png");
+    this->textures[TEXTURE_UV_GRASS] = new UVTexture("data/tex/groundgrass.jpg");
+    this->textures[TEXTURE_UV_LANTERN] = new UVTexture("data/tex/lantern.png");
+    this->textures[TEXTURE_UV_TORII_GATE] = new UVTexture("data/tex/toriigate.png");
 }

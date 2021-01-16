@@ -1,7 +1,7 @@
 #ifndef CONST_SEEN
 #define CONST_SEEN
 
-#define WINDOW_NAME "Zad"
+#define WINDOW_NAME "Projekt"
 
 #define ST_FPS 0
 
@@ -24,9 +24,23 @@
 #define PROGRAM_PHONH 0
 #define PROGRAM_TEXT 1
 
-#define MODEL_CUBE 0x0
+#define MODEL_CUBE 0
+#define MODEL_SCREEN 1
+#define MODEL_BOW 2
+#define MODEL_CHERRY_TREE 3
+#define MODEL_CHERRY_TREE_BLOSSOM 4
+#define MODEL_ISLAND 5
+#define MODEL_LANTERN 6
+#define MODEL_TORII_GATE 7
 
-#define TEXTURE_CUBE_CORONA 0x0
+#define TEXTURE_CUBE_CORONA 0
+#define TEXTURE_CUBE_SPACE 1
+#define TEXTURE_UV_BOW 2
+#define TEXTURE_UV_CHERRY_TREE 3
+#define TEXTURE_UV_CHERRY_TREE_BLOSSOM 4
+#define TEXTURE_UV_GRASS 5
+#define TEXTURE_UV_LANTERN 6
+#define TEXTURE_UV_TORII_GATE 7
 
 #define FONT_ARIAL_32 0
 

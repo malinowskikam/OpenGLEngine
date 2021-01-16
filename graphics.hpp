@@ -1,5 +1,5 @@
-#ifndef MODEL_SEEN
-#define MODEL_SEEN
+#ifndef GRAPHICS_SEEN
+#define GRAPHICS_SEEN
 
 class Model
 {
