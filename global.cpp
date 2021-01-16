@@ -12,6 +12,12 @@ Global::Global()
 	this->windowWidth = 1366;
 	this->windowHeight = 768;
 
+    this->drawStart = 0.01f;
+    this->drawEnd = 150.0f;
+    this->cameraFov = 80.0f;
+
+    this->sceneAmbience = glm::vec3(0.1f);
+
     this->flags = 0;
 }
 

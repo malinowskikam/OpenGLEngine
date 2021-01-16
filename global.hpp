@@ -9,11 +9,16 @@ class Global{
         float calculatedFps;
         unsigned int windowWidth;
         unsigned int windowHeight;
+        float drawStart;
+        float drawEnd;
+        float cameraFov;
 
         unsigned int flags;
 
         float fogStart;
         float fogStrength;
+        
+        glm::vec3 sceneAmbience;
 
         std::map<int,Model*> models;
         std::map<int,Texture*> textures;
