@@ -2,13 +2,12 @@
 
 extern Global *global;
 
-Scene::Scene(int windowWidth,int windowHeight, const char* path)
+Scene::Scene()
 {
     this->cameraRotation = glm::vec3(0.0f,-(M_PI/2.0),0.0f);//pitch, yaw, roll
     this->cameraPosition = glm::vec3(0.0f,0.0f,0.0f);
 
     this->cameraUp = glm::vec3(0.0,1.0,0.0);
-    this->updateLookingAngle();
 }
 
 void Scene::updateLookingAngle()
@@ -24,6 +23,7 @@ void Scene::updateLookingAngle()
 
     this->projectionMatrix = glm::perspective(glm::radians(global->cameraFov), global->windowWidth/(float)(global->windowHeight), global->drawStart, global->drawEnd);
     this->viewMatrix = glm::lookAt(cameraPosition,cameraPosition+cameraFront,cameraUp);
+    this->projViewMatrix = this->projectionMatrix * this->viewMatrix;
 }
 
 void updateCameraPosition()

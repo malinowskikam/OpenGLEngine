@@ -26,6 +26,7 @@ class Global{
         std::map<int,Program*> programs;
         std::map<int,GlyphSet*> fonts;
 
+        Scene *scene;
         GLFWwindow* window;
 
         Global();

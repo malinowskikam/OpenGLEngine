@@ -32,12 +32,11 @@
 class Global;
 class Scene;
 class Object3D;
-class Text;
 class Model;
 class Texture;
 class Program;
 class GlyphSet;
-class InstancedObjectGroup;
+class Material;
 
 #include "common.hpp"
 #include "objParser.hpp"

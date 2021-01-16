@@ -19,6 +19,8 @@ Global::Global()
     this->sceneAmbience = glm::vec3(0.1f);
 
     this->flags = 0;
+
+    this->scene = new Scene();
 }
 
 Global* getGlobal()

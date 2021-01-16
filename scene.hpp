@@ -14,13 +14,10 @@ class Scene
 
         glm::mat4 projectionMatrix;
         glm::mat4 viewMatrix;
+        glm::mat4 projViewMatrix;
 
-        Scene(int windowWidth,int windowHeight, const char *path);
+        Scene();
         void updateLookingAngle();
-
-        glm::mat4 getViewMatrix();
-        glm::mat4 getProjectionMatrix();
-
         void updateCameraPosition();
 };
 
