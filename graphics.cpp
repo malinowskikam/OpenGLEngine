@@ -174,3 +174,34 @@ int CubeMapTexture::getTextureType()
 {
     return GL_TEXTURE_CUBE_MAP;
 }
+
+Material::Material(
+            GLint colorMode,
+            GLint envMode,
+            glm::vec3 albedoColor,
+            glm::vec3 ambientColor,
+            glm::vec3 diffuseColor,
+            glm::vec3 specularColor,
+            GLfloat roughness,
+            GLfloat reflectColorPercentage,
+            GLfloat refractColorPercentage,
+            GLfloat refractCoeff) 
+{
+    this->colorMode = colorMode;
+    this->envMode = envMode;
+    this->albedoColor = albedoColor;
+    this->ambientColor = ambientColor;
+    this->diffuseColor = diffuseColor;
+    this->specularColor = specularColor;
+    this->roughness = roughness;
+    this->reflectColorPercentage = reflectColorPercentage;
+    this->refractColorPercentage = refractColorPercentage;
+    this->refractCoeff = refractCoeff;
+}
+
+Material* Material::copy()
+{
+    return new Material(this->colorMode,this->envMode,this->albedoColor,this->ambientColor,
+                        this->diffuseColor,this->specularColor,this->roughness,this->reflectColorPercentage,
+                        this->refractColorPercentage,this->refractCoeff);
+}

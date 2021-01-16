@@ -22,6 +22,7 @@ class Global{
 
         std::map<int,Model*> models;
         std::map<int,Texture*> textures;
+        std::map<int,Material*> materials;
         std::map<int,Program*> programs;
         std::map<int,GlyphSet*> fonts;
 

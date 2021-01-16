@@ -88,4 +88,6 @@ void Global::loadAssets()
     this->textures[TEXTURE_UV_GRASS] = new UVTexture("data/tex/groundgrass.jpg");
     this->textures[TEXTURE_UV_LANTERN] = new UVTexture("data/tex/lantern.png");
     this->textures[TEXTURE_UV_TORII_GATE] = new UVTexture("data/tex/toriigate.png");
+
+    this->materials[MATERIAL_DEFAULT] = new Material(MATERIAL_COLOR_UV,MATERIAL_ENV_NONE,glm::vec3(0.0f),glm::vec3(0.05f),glm::vec3(1.0f),glm::vec3(0.8f),32,0.01f,0.01f,1.0f);
 }

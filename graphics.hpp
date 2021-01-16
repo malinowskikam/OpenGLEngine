@@ -40,4 +40,38 @@ class CubeMapTexture : public Texture
         int getTextureType();
 };
 
+class Material
+{
+    public:
+        GLint colorMode;
+        GLint envMode;
+
+        glm::vec3 albedoColor;
+
+        glm::vec3 ambientColor;
+        glm::vec3 diffuseColor;
+        glm::vec3 specularColor;
+        GLfloat roughness;
+
+        GLfloat reflectColorPercentage;
+        GLfloat refractColorPercentage;
+        GLfloat refractCoeff;
+
+        Material(
+            GLint colorMode,
+            GLint envMode,
+            glm::vec3 albedoColor,
+            glm::vec3 ambientColor,
+            glm::vec3 diffuseColor,
+            glm::vec3 specularColor,
+            GLfloat roughness,
+            GLfloat reflectColorPercentage,
+            GLfloat refractColorPercentage,
+            GLfloat refractCoeff
+        );
+
+        Material* copy();
+        
+};
+
 #endif
